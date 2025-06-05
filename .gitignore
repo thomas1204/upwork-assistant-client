@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
+#VITE_GOOGLE_AUTH_CLIENT_ID=1051080186604-eqfc77f8cnvbnf1rltor09rluj1ojkqo.apps.googleusercontent.com
+#VITE_BACKEND_BASE_URL=http://localhost:9000
+#VITE_STRIPE_PAYMENT_LINK=buy.stripe.com/test_4gw3fGdODdMg7tK144
