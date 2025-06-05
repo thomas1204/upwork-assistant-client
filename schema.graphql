@@ -1,0 +1,51 @@
+scalar Date
+
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  image: String!
+  email: String!
+  active: Boolean!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type JobMetrics {
+  message: String!
+}
+
+input UpdateJobMetricsInput {
+  upworkJobId: String!
+  upworkJobLink: String!
+  title: String!
+  description: String!
+  postedOn: String!
+  skills: [String!]!
+  rate: String!
+  proposals: String!
+  interviewing: String!
+  invitesSent: String!
+  unansweredInvites: String!
+  lastViewedByClient: String
+  connects: Int!
+  paymentVerified: Boolean!
+  clientRating: Float!
+  totalReviews: Int!
+  clientHireRate: String!
+  clientMemberSince: String!
+  totalJobs: Int!
+  hires: String
+}
+
+
+# Root Query
+type Query {
+  viewer: User
+  tipsForCoverLetter(upworkJobId: String!): JobMetrics!
+}
+
+# Root Mutation
+type Mutation {
+  updateJobMetrics(input: UpdateJobMetricsInput!): JobMetrics
+}
