@@ -6,14 +6,17 @@ type User {
   lastName: String!
   image: String!
   email: String!
-  active: Boolean!
-  createdAt: Date!
-  updatedAt: Date!
+  hasActiveSubscription: Boolean!
+  isTrial: Boolean
+  isCancelled: Boolean
+  subscriptionStartDate: Date
+  subscriptionEndDate: Date
 }
 
 type JobMetrics {
   message: String!
 }
+
 
 input UpdateJobMetricsInput {
   upworkJobId: String!
@@ -38,6 +41,14 @@ input UpdateJobMetricsInput {
   hires: String
 }
 
+type Subscription {
+  hasActiveSubscription: Boolean!
+  isTrial: Boolean
+  isCancelled: Boolean
+  subscriptionStartDate: Date
+  subscriptionEndDate: Date
+}
+
 
 # Root Query
 type Query {
@@ -48,4 +59,6 @@ type Query {
 # Root Mutation
 type Mutation {
   updateJobMetrics(input: UpdateJobMetricsInput!): JobMetrics
+  cancelSubscription: Subscription!
+  reactivateSubscription: Subscription!
 }

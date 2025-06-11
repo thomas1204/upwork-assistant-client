@@ -1,0 +1,68 @@
+import { gql, useMutation } from '@apollo/client'
+import moment from 'moment-timezone'
+import { useNavigate } from 'react-router'
+
+type Props = {
+  viewer: {
+    hasActiveSubscription: boolean
+    isTrial: boolean
+    isCancelled: boolean
+    subscriptionStartDate: string
+    subscriptionEndDate: string
+  }
+}
+
+const CANCEL_SUBSCRIPTION = gql`
+  mutation CancelSubscription {
+    cancelSubscription {
+      hasActiveSubscription
+      isTrial
+      isCancelled
+      subscriptionStartDate
+      subscriptionEndDate
+    }
+  }
+`
+
+export default function CancelSubscriptionButton(props: Props) {
+  const navigate = useNavigate()
+  const [cancelSubscription, { loading }] = useMutation(CANCEL_SUBSCRIPTION)
+
+  return (
+    <>
+      {loading && (
+        <button
+          disabled={true}
+          className="mt-5 block w-full rounded-md bg-red-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm border-0">
+          <div className="flex justify-center items-center">
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          </div>
+        </button>
+      )}
+      {!loading && (
+        <button
+          onClick={() => handleCancelSubscription()}
+          className="mt-5 block w-full rounded-md bg-red-700 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm border-0">
+          Cancel Subscription
+        </button>
+      )}
+      <p className="mt-6 text-xs/5 text-gray-600">
+        Your subscription started on <b>{getLocalTimeFromString(props.viewer.subscriptionStartDate)}</b>, and will be
+        active until <b>{getLocalTimeFromString(props.viewer.subscriptionEndDate)}</b>.
+      </p>
+    </>
+  )
+
+  function handleCancelSubscription() {
+    void cancelSubscription({
+      onCompleted: () => {
+        navigate('/profile')
+      }
+    })
+  }
+
+  function getLocalTimeFromString(datetimeString: string, format: string = 'MMMM D, YYYY'): string {
+    const clientTimezone = moment.tz.guess() // auto-detect user's timezone
+    return moment(datetimeString).tz(clientTimezone).format(format)
+  }
+}
