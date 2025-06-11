@@ -1,7 +1,6 @@
-import { lazy, useEffect } from 'react'
+import { lazy } from 'react'
 import { Navigate, NavLink, useNavigate } from 'react-router'
 import { useQuery, gql } from '@apollo/client'
-import Loader from '../loader'
 import { removeAuthToken } from '../utils'
 
 const ProPlan = lazy(() => import('./proPlan'))
@@ -13,31 +12,13 @@ const GET_VIEWER = gql`
       firstName
       lastName
       image
-      hasActiveSubscription
-      isTrial
-      isCancelled
-      subscriptionStartDate
-      subscriptionEndDate
     }
   }
 `
 
 export default function Profile() {
   const navigate = useNavigate()
-  const { client, loading, error, data, startPolling, stopPolling } = useQuery(GET_VIEWER)
-
-  useEffect(() => {
-    startPolling(3000)
-    const timer = setTimeout(() => stopPolling(), 20000)
-    return () => {
-      clearTimeout(timer)
-      stopPolling();
-    }
-  }, [startPolling, stopPolling])
-
-  if (loading) {
-    return <Loader />
-  }
+  const { client, error, data } = useQuery(GET_VIEWER)
 
   if (error) {
     removeAuthToken()
@@ -57,8 +38,8 @@ export default function Profile() {
             <div className={'h-10 w-10 rounded-full overflow-hidden'}>
               <img
                 className={'w-full h-full object-contain'}
-                alt={`${data.viewer.firstName} ${data.viewer.lastName}`}
-                src={data.viewer.image ?? 'https://avatar.iran.liara.run/public'}
+                alt={'user-profile-image'}
+                src={data?.viewer?.image ?? 'https://avatar.iran.liara.run/public'}
               />
             </div>
             <button
@@ -70,7 +51,7 @@ export default function Profile() {
         </nav>
       </header>
 
-      <ProPlan viewer={data.viewer} />
+      <ProPlan />
 
       <div className="bg-white">
         <div className="px-6 pt-24 sm:px-6 sm:pt-32 lg:px-8">

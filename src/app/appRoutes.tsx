@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy } from 'react'
 import { useQuery, gql } from '@apollo/client'
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router";
 import { removeAuthToken } from './utils'
@@ -9,6 +9,7 @@ const Login = lazy(() => import('./login'))
 const Profile = lazy(() => import('./profile'))
 const Loader = lazy(() => import('./loader'))
 const PageNotFound = lazy(() => import('./404'))
+const SubscriptionProcessing = lazy(() => import('./profile/subscriptionProcessing'))
 
 
 export default function AppRoutes(){
@@ -19,6 +20,7 @@ export default function AppRoutes(){
         <Route path="/login" element={<Login />} />
         <Route path={"/profile"} element={<Protected />}>
           <Route index element={<Profile />} />
+          <Route path={"/profile/update-subscription"} element={<SubscriptionProcessing />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
@@ -38,17 +40,12 @@ const GET_VIEWER = gql`
 
 function Protected() {
   const { loading, error, data } = useQuery(GET_VIEWER)
-
-  if (loading) return <Loader />
+  if (loading && !data) return <Loader />;
 
   if (error || !data?.viewer) {
     removeAuthToken()
     return <Navigate to="/login" />
   }
 
-  return (
-    <Suspense fallback={<Loader  />}>
-      <Outlet />
-    </Suspense>
-  )
+  return <Outlet />
 }

@@ -1,11 +1,8 @@
-import { Suspense } from 'react'
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { getAuthToken } from './utils'
 
 import AppRoutes from './appRoutes'
-import Loader from './loader'
-
 
 const httpLink = createHttpLink({
   uri: `${import.meta.env.VITE_BACKEND_BASE_URL}/graphql`,
@@ -26,12 +23,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
-export default function App(){
-  return(
+export default function App() {
+  return (
     <ApolloProvider client={client}>
-      <Suspense fallback={<Loader />}>
-        <AppRoutes />
-      </Suspense>
+      <AppRoutes />
     </ApolloProvider>
   )
 }

@@ -56,7 +56,7 @@ export default function CancelSubscriptionButton(props: Props) {
   function handleCancelSubscription() {
     void cancelSubscription({
       onCompleted: () => {
-        navigate('/profile')
+        navigate('/profile/update-subscription')
       }
     })
   }

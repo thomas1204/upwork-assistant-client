@@ -54,7 +54,7 @@ export default function ReactivateSubscriptionButton(props: Props) {
   function handleReactivateSubscription() {
     void reactivateSubscription({
       onCompleted: () => {
-        navigate('/profile')
+        navigate('/profile/update-subscription')
       }
     })
   }
