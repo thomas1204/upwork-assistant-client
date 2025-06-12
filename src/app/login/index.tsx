@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useNavigate, Navigate } from 'react-router'
+import { useNavigate, Navigate, useSearchParams } from 'react-router'
 import { useQuery, gql } from '@apollo/client'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { setAuthToken, removeAuthToken } from '../utils'
@@ -22,6 +22,7 @@ const GET_VIEWER = gql`
 
 export default function Login() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams();
   const { loading, error, data } = useQuery(GET_VIEWER)
 
   useEffect(() => {
@@ -37,6 +38,9 @@ export default function Login() {
   }
 
   if (data && data.viewer) {
+    if(searchParams.get("ref") === "chrome-extension-login") {
+      return <Navigate to={`/profile/chrome-extension-login?redirect_uri=${searchParams.get("redirect_uri")}`} />
+    }
     return <Navigate to="/profile" />
   }
 
@@ -94,13 +98,16 @@ export default function Login() {
     })
 
     if (!loginResponse.ok) {
-      console.log('error', 'Login failed. Please try again.')
       navigate('/')
       return
     }
 
     setAuthToken((await loginResponse.json()).token)
-    console.log('success', 'Logged in successfully')
+
+    if(searchParams.get("ref") === "chrome-extension-login") {
+      navigate(`/profile/chrome-extension-login?redirect_uri=${searchParams.get("redirect_uri")}`)
+      return
+    }
     navigate('/profile')
   }
 }

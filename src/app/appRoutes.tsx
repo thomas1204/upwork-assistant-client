@@ -9,7 +9,8 @@ const Login = lazy(() => import('./login'))
 const Profile = lazy(() => import('./profile'))
 const Loader = lazy(() => import('./loader'))
 const PageNotFound = lazy(() => import('./404'))
-const SubscriptionProcessing = lazy(() => import('./profile/subscriptionProcessing'))
+const SubscriptionProcessing = lazy(() => import('./subscriptionProcessing'))
+const ChromeExtensionLogin = lazy(() => import('./chromeExtensionLogin'))
 
 
 export default function AppRoutes(){
@@ -21,6 +22,7 @@ export default function AppRoutes(){
         <Route path={"/profile"} element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path={"/profile/update-subscription"} element={<SubscriptionProcessing />} />
+          <Route path={"/profile/chrome-extension-login"} element={<ChromeExtensionLogin />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

@@ -56,7 +56,7 @@ export default function Profile() {
       <div className="bg-white">
         <div className="px-6 pt-24 sm:px-6 sm:pt-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-3xl font-semibold tracking-tight text-gray-900">Install the Chrome Extension</h3>
+            <h3 className="text-3xl font-semibold tracking-tight text-gray-900">UpsiftAI Chrome Extension Access Token</h3>
             <p className="mx-auto mt-6 max-w-xl text-pretty text-base/7 text-gray-600">
               To access smart job insights, red flag detection, and personalized cover letter tips — install our Chrome
               extension. <br />
