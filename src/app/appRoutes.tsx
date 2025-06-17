@@ -22,7 +22,6 @@ export default function AppRoutes() {
         <Route path={'/profile'} element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path={'/profile/update-subscription'} element={<SubscriptionProcessing />} />
-          {/* <Route path={'/profile/chrome-extension-login'} element={<ChromeExtensionLogin />} /> */}
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

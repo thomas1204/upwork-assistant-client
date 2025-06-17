@@ -103,9 +103,14 @@ export default function Profile() {
       <footer className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-8 md:flex md:items-center md:justify-between lg:px-8 border-t-1 border-gray-900">
           <div className="flex justify-center gap-x-6 md:order-2">
-            <p className="text-center text-slate-950 text-md sm:text-lg">We never share or sell your data. Period.</p>
+            <p className="text-center text-white text-base sm:text-xs font-medium">
+              We never share or sell your data. Period.{' '}
+              <NavLink to="/privacy-policy" className="underline">
+                Privacy Policy.
+              </NavLink>
+            </p>
           </div>
-          <p className="mt-8 text-center text-base text-slate-950 md:order-1 md:mt-0">
+          <p className="mt-8 text-center text-base text-slate-950 md:order-1 md:mt-0 sm:text-xs">
             &copy; 2025 UpsiftAI. All rights reserved.
           </p>
         </div>
