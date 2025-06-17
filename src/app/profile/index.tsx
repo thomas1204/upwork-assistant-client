@@ -48,7 +48,7 @@ export default function Profile() {
             </div>
             <button
               onClick={() => logout()}
-              className="rounded-full bg-slate-950 px-3.5 py-2.5 text-sm text-white shadow-sm border-0">
+              className="rounded-full bg-slate-950 px-3.5 py-2.5 text-sm text-white shadow-sm border-0 cursor-pointer">
               Logout
             </button>
           </div>

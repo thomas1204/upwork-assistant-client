@@ -6,7 +6,7 @@ export default function Example() {
     <header className="bg-white">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
         <div className="flex items-center">
-          <NavLink to="/" className="text-gray-900 text-2xl sm:text-3xl font-semibold flex items-center">
+          <NavLink to="/" className="text-gray-900 text-2xl sm:text-3xl font-semibold flex items-center cursor-pointer">
             <div className="inline-flex items-center mr-2 h-8 w-8">
               <img src={Logo} alt="Logo" className="h-full w-full object-contain" />
             </div>

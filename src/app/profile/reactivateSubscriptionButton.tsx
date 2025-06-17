@@ -40,14 +40,17 @@ export default function ReactivateSubscriptionButton(props: Props) {
           </div>
         </button>
       )}
-      {
-        !loading && <button
+      {!loading && (
+        <button
           onClick={() => handleReactivateSubscription()}
-          className="mt-5 block w-full rounded-md bg-slate-950 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm border-0">
+          className="mt-5 block w-full rounded-md bg-slate-950 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm border-0 cursor-pointer">
           Reactivate Subscription
         </button>
-      }
-      <p className="mt-6 text-xs/5 text-gray-600">Your subscription started on <b>{getLocalTimeFromString(props.viewer.subscriptionStartDate)}</b>, and will be active until <b>{getLocalTimeFromString(props.viewer.subscriptionEndDate)}</b>.</p>
+      )}
+      <p className="mt-6 text-xs/5 text-gray-600">
+        Your subscription started on <b>{getLocalTimeFromString(props.viewer.subscriptionStartDate)}</b>, and will be
+        active until <b>{getLocalTimeFromString(props.viewer.subscriptionEndDate)}</b>.
+      </p>
     </>
   )
 

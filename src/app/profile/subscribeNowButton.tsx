@@ -18,7 +18,7 @@ export default function SubscribeNowButton() {
       {!loading && (
         <button
           onClick={() => getCheckoutUrl()}
-          className="mt-5 block w-full rounded-md bg-slate-950 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm border-0">
+          className="mt-5 block w-full rounded-md bg-slate-950 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm border-0 cursor-pointer">
           Subscribe Now
         </button>
       )}
