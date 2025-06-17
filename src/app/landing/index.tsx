@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from 'react-router'
 
 import Header from '../header'
 import Screenshots from '../screenshots'
@@ -90,8 +90,7 @@ export default function Landing() {
             </h2>
             {/* Description */}
             <p className="mx-auto mt-6 max-w-xl text-pretty text-lg/8 text-gray-600 mb-6">
-              Start with a <span className="font-semibold text-gray-900">7-day free trial</span> —
-              <span className="font-semibold text-gray-900">no credit card required</span> — and experience the
+              Start with a <span className="font-semibold text-gray-900">7-day free trial</span> — and experience the
               difference. After the trial, continue with full access for{' '}
               <span className="font-semibold text-gray-900">$10/month</span>. No hidden fees. Cancel anytime.
             </p>
@@ -138,4 +137,3 @@ export default function Landing() {
     </>
   )
 }
-
