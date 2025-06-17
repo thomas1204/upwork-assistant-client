@@ -11,6 +11,7 @@ const Loader = lazy(() => import('./loader'))
 const PageNotFound = lazy(() => import('./404'))
 const SubscriptionProcessing = lazy(() => import('./subscriptionProcessing'))
 const PrivacyPolicy = lazy(() => import('./privacyPolicy'))
+const TermsOfService = lazy(() => import('./termsOfService'))
 
 export default function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ export default function AppRoutes() {
         <Route index element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path={'/profile'} element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path={'/profile/update-subscription'} element={<SubscriptionProcessing />} />

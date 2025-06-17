@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
       <div className="bg-white">
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl">
-            <h1 className="text-3xl font-bold mb-6 text-gray-900">UpsiftAI Privacy Policy</h1>
+            <h1 className="text-3xl font-bold mb-6 text-gray-900">UpsiftAI - Privacy Policy</h1>
 
             <p className="mb-4 text-sm text-gray-900">Effective Date: 17 June, 2025</p>
 
@@ -111,10 +111,7 @@ export default function PrivacyPolicy() {
         <div className="mx-auto max-w-7xl px-6 py-8 md:flex md:items-center md:justify-between lg:px-8 border-t-1 border-gray-900">
           <div className="flex justify-center gap-x-6 md:order-2">
             <p className="text-center text-slate-950 text-base sm:text-xs font-medium">
-              We never share or sell your data. Period.{' '}
-              <NavLink to="/" className="underline">
-                Home.
-              </NavLink>
+              <NavLink to="/">Home.</NavLink> <NavLink to="/privacy-policy">Privacy Policy.</NavLink>
             </p>
           </div>
           <p className="mt-8 text-center text-base text-slate-950 md:order-1 md:mt-0 sm:text-xs">
