@@ -1,11 +1,12 @@
 import { useState } from 'react'
 
-import SS3 from '../assets/ss3.png'
-import SS2 from '../assets/ss2.png'
-import SS1 from '../assets/ss1.png'
-import SS4 from '../assets/ss4.png'
+import SS1 from '../assets/1.png'
+import SS2 from '../assets/2.png'
+import SS3 from '../assets/3.png'
+import SS4 from '../assets/4.png'
+import SS5 from '../assets/5.png'
 
-const images = [SS3, SS2, SS1, SS4]
+const images = [SS3, SS2, SS1, SS4, SS5]
 
 export default function Screenshots() {
   const [currentIndex, setCurrentIndex] = useState(0)

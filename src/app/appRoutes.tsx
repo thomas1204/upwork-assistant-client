@@ -1,6 +1,6 @@
 import { lazy } from 'react'
 import { useQuery, gql } from '@apollo/client'
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router'
 import { removeAuthToken } from './utils'
 
 // Components
@@ -10,26 +10,24 @@ const Profile = lazy(() => import('./profile'))
 const Loader = lazy(() => import('./loader'))
 const PageNotFound = lazy(() => import('./404'))
 const SubscriptionProcessing = lazy(() => import('./subscriptionProcessing'))
-const ChromeExtensionLogin = lazy(() => import('./chromeExtensionLogin'))
+// const ChromeExtensionLogin = lazy(() => import('./chromeExtensionLogin'))
 
-
-export default function AppRoutes(){
-  return(
+export default function AppRoutes() {
+  return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Landing />} />
         <Route path="/login" element={<Login />} />
-        <Route path={"/profile"} element={<Protected />}>
+        <Route path={'/profile'} element={<Protected />}>
           <Route index element={<Profile />} />
-          <Route path={"/profile/update-subscription"} element={<SubscriptionProcessing />} />
-          <Route path={"/profile/chrome-extension-login"} element={<ChromeExtensionLogin />} />
+          <Route path={'/profile/update-subscription'} element={<SubscriptionProcessing />} />
+          {/* <Route path={'/profile/chrome-extension-login'} element={<ChromeExtensionLogin />} /> */}
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   )
 }
-
 
 const GET_VIEWER = gql`
   query GetViewer {
@@ -42,7 +40,7 @@ const GET_VIEWER = gql`
 
 function Protected() {
   const { loading, error, data } = useQuery(GET_VIEWER)
-  if (loading && !data) return <Loader />;
+  if (loading && !data) return <Loader />
 
   if (error || !data?.viewer) {
     removeAuthToken()
