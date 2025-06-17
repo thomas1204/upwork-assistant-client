@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import { Navigate, NavLink, useNavigate } from 'react-router'
 import { useQuery, gql } from '@apollo/client'
 import { removeAuthToken } from '../utils'
+import Logo from '../assets/logo.png'
 
 const ProPlan = lazy(() => import('./proPlan'))
 
@@ -30,8 +31,11 @@ export default function Profile() {
       <header className="bg-white">
         <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
           <div className="flex items-center">
-            <NavLink to="/" className="text-gray-900 text-2xl sm:text-3xl font-semibold">
-              UpsiftAI
+            <NavLink to="/" className="text-gray-900 text-2xl sm:text-3xl font-semibold flex items-center">
+              <div className="inline-flex items-center mr-2 h-8 w-8">
+                <img src={Logo} alt="Logo" className="h-full w-full object-contain" />
+              </div>
+              <div className="inline-flex items-center">UpsiftAI</div>
             </NavLink>
           </div>
           <div className="flex flex-1 items-center justify-end gap-x-2">
@@ -56,7 +60,9 @@ export default function Profile() {
       <div className="bg-white">
         <div className="px-6 pt-24 sm:px-6 sm:pt-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-3xl font-semibold tracking-tight text-gray-900">UpsiftAI Chrome Extension Access Token</h3>
+            <h3 className="text-3xl font-semibold tracking-tight text-gray-900">
+              UpsiftAI Chrome Extension Access Token
+            </h3>
             <p className="mx-auto mt-6 max-w-xl text-pretty text-base/7 text-gray-600">
               To access smart job insights, red flag detection, and personalized cover letter tips — install our Chrome
               extension. <br />
