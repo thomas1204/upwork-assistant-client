@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import SS3 from '../assets/ss3.png'
 import SS2 from '../assets/ss2.png'
@@ -11,11 +11,6 @@ export default function Screenshots() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFading, setIsFading] = useState(false)
   const [currentImage, setCurrentImage] = useState(images[0])
-
-  useEffect(() => {
-    const interval = setInterval(nextImage, 5000)
-    return () => clearInterval(interval)
-  }, [currentIndex])
 
   return (
     <div className="bg-white">
@@ -32,7 +27,13 @@ export default function Screenshots() {
           </figure>
           <div className={'flex justify-end items-center py-2 pr-1'}>
             <button onClick={() => prevImage()} className={'mr-2'}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
               </svg>
             </button>
