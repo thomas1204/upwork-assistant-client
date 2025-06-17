@@ -10,7 +10,7 @@ const Profile = lazy(() => import('./profile'))
 const Loader = lazy(() => import('./loader'))
 const PageNotFound = lazy(() => import('./404'))
 const SubscriptionProcessing = lazy(() => import('./subscriptionProcessing'))
-// const ChromeExtensionLogin = lazy(() => import('./chromeExtensionLogin'))
+const PrivacyPolicy = lazy(() => import('./privacyPolicy'))
 
 export default function AppRoutes() {
   return (
@@ -18,6 +18,7 @@ export default function AppRoutes() {
       <Routes>
         <Route index element={<Landing />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path={'/profile'} element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path={'/profile/update-subscription'} element={<SubscriptionProcessing />} />
