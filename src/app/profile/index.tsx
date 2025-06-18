@@ -70,6 +70,7 @@ export default function Profile() {
             </p>
             <div className="mt-5 flex items-center justify-center gap-x-6">
               <a
+                target="_blank"
                 href={import.meta.env.VITE_CHROME_EXTENSION_URL}
                 className="rounded-md bg-slate-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm">
                 Add to Chrome
