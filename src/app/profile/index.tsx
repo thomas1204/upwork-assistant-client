@@ -69,7 +69,9 @@ export default function Profile() {
               It works right on Upwork, helping you apply faster and smarter.
             </p>
             <div className="mt-5 flex items-center justify-center gap-x-6">
-              <a href="#" className="rounded-md bg-slate-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm">
+              <a
+                href={import.meta.env.VITE_CHROME_EXTENSION_URL}
+                className="rounded-md bg-slate-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm">
                 Add to Chrome
               </a>
             </div>
@@ -111,12 +113,8 @@ export default function Profile() {
               directly with our team. Join us — we’re here to help!
             </p>
             <div className="mt-5 flex items-center justify-center gap-x-6">
-              {/* <a href="#" className="rounded-md bg-slate-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm">
-                Add to Chrome
-              </a> */}
-
               <a
-                href="https://discord.gg/JgMNHxN5"
+                href={import.meta.env.VITE_DISCORD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-slate-950 text-white text-sm sm:text-base font-medium px-5 py-2 rounded-full transition">
