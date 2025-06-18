@@ -111,7 +111,7 @@ export default function Landing() {
           directly with our team. Join us — we’re here to help!
         </p>
         <a
-          href="https://discord.gg/YOUR_INVITE_CODE"
+          href="https://discord.gg/JgMNHxN5"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-slate-950 text-white text-sm sm:text-base font-medium px-5 py-2 rounded-full transition">
