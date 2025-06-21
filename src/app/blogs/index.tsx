@@ -23,26 +23,30 @@ export default function Blogs() {
 
   useEffect(() => {
     async function fetchBlogs() {
-      setLoading(true)
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/blogs`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ page }),
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setBlogs((prevBlogs) => {
-          const existingIds = new Set(prevBlogs.map((blog) => blog.slug))
-          const newBlogs = (data?.blogs ?? []).filter((blog: Blog) => !existingIds.has(blog.slug))
-          return [...prevBlogs, ...newBlogs]
+      try {
+        setLoading(true)
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_BASE_URL}/blogs`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ page }),
         })
-        setTotalBlogs(data?.totalBlogs ?? 0)
-      }
 
-      setLoading(false)
+        if (response.ok) {
+          const data = await response.json()
+          setBlogs((prevBlogs) => {
+            const existingIds = new Set(prevBlogs.map((blog) => blog.slug))
+            const newBlogs = (data?.blogs ?? []).filter((blog: Blog) => !existingIds.has(blog.slug))
+            return [...prevBlogs, ...newBlogs]
+          })
+          setTotalBlogs(data?.totalBlogs ?? 0)
+        }
+
+        setLoading(false)
+      } catch {
+        setLoading(false)
+      }
     }
 
     fetchBlogs()
@@ -52,25 +56,25 @@ export default function Blogs() {
     <>
       <Header />
 
-      <div className="bg-white py-8 sm:py-12">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {blogs.length === 0 && !loading && (
-              <div className="px-6 pt-24 sm:px-6 sm:pt-32 lg:px-8">
-                <div className="mx-auto max-w-2xl text-center">
-                  <h2 className="text-balance text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
-                    Oops… No Blogs Yet!
-                  </h2>
-                  <p className="mx-auto mt-6 max-w-xl text-pretty text-lg/8 text-gray-600 mb-6">
-                    Either we’re still writing them… or got distracted by cat videos. 🐱 Check back soon — fresh content
-                    is brewing!
-                  </p>
-                </div>
-              </div>
-            )}
+      {blogs.length === 0 && !loading && (
+        <div className="bg-white py-8 sm:py-12">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-balance text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+              Oops… No Blogs Yet!
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-pretty text-lg/8 text-gray-600 mb-6">
+              Either we’re still writing them… or got distracted by cat videos. 🐱 Check back soon — fresh content is
+              brewing!
+            </p>
+          </div>
+        </div>
+      )}
 
-            {blogs.length > 0 &&
-              blogs.map((blog) => (
+      {blogs.length > 0 && !loading && (
+        <div className="bg-white py-8 sm:py-12">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+              {blogs.map((blog) => (
                 <article key={blog.slug} className="flex flex-col items-start justify-between">
                   <div className="relative w-full">
                     <img
@@ -94,9 +98,10 @@ export default function Blogs() {
                   </div>
                 </article>
               ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {blogs.length < totalBlogs && !loading && (
         <div className="bg-white py-4 sm:py-8">
