@@ -12,6 +12,7 @@ const PageNotFound = lazy(() => import('./404'))
 const SubscriptionProcessing = lazy(() => import('./subscriptionProcessing'))
 const PrivacyPolicy = lazy(() => import('./privacyPolicy'))
 const TermsOfService = lazy(() => import('./termsOfService'))
+const Blogs = lazy(() => import('./blogs'))
 
 export default function AppRoutes() {
   return (
@@ -21,6 +22,7 @@ export default function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path={'/profile'} element={<Protected />}>
           <Route index element={<Profile />} />
           <Route path={'/profile/update-subscription'} element={<SubscriptionProcessing />} />
@@ -42,6 +44,7 @@ const GET_VIEWER = gql`
 
 function Protected() {
   const { loading, error, data } = useQuery(GET_VIEWER)
+
   if (loading && !data) return <Loader />
 
   if (error || !data?.viewer) {

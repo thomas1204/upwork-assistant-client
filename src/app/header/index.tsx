@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router'
 import Logo from '../assets/logo.png'
 
-export default function Example() {
+export default function Header() {
   return (
     <header className="bg-white">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8">
@@ -14,9 +14,7 @@ export default function Example() {
           </NavLink>
         </div>
         <div className="flex flex-1 items-center justify-end gap-x-6">
-          <NavLink
-            to="/login"
-            className="rounded-full bg-slate-950 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm">
+          <NavLink to="/login" className="rounded-full bg-slate-950 px-5 py-2.5 text-sm text-white shadow-sm">
             Login or Register
           </NavLink>
         </div>
