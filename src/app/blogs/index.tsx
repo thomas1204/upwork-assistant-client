@@ -121,7 +121,7 @@ export default function Blogs() {
         <div className="mx-auto max-w-7xl px-6 py-8 md:flex md:items-center md:justify-between lg:px-8 border-t-1 border-gray-900">
           <div className="flex justify-center gap-x-6 md:order-2">
             <p className="text-center text-slate-950 text-base sm:text-xs font-medium">
-              <NavLink to="/privacy-policy">Privacy Policy.</NavLink>{' '}
+              <NavLink to="/">Home.</NavLink> <NavLink to="/privacy-policy">Privacy Policy.</NavLink>{' '}
               <NavLink to="/terms-of-service">Terms of Service.</NavLink>
             </p>
           </div>
