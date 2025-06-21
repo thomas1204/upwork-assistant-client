@@ -55,30 +55,45 @@ export default function Blogs() {
       <div className="bg-white py-8 sm:py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {blogs.map((blog) => (
-              <article key={blog.slug} className="flex flex-col items-start justify-between">
-                <div className="relative w-full">
-                  <img
-                    alt=""
-                    src={blog.image}
-                    className="aspect-video w-full bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-                  />
+            {blogs.length === 0 && !loading && (
+              <div className="px-6 pt-24 sm:px-6 sm:pt-32 lg:px-8">
+                <div className="mx-auto max-w-2xl text-center">
+                  <h2 className="text-balance text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+                    Oops… No Blogs Yet!
+                  </h2>
+                  <p className="mx-auto mt-6 max-w-xl text-pretty text-lg/8 text-gray-600 mb-6">
+                    Either we’re still writing them… or got distracted by cat videos. 🐱 Check back soon — fresh content
+                    is brewing!
+                  </p>
                 </div>
-                <div className="max-w-xl">
-                  <div className="mt-6 flex items-center gap-x-4 text-xs">
-                    <time dateTime={blog.createdAt} className="text-gray-500">
-                      {moment.utc(blog.createdAt).local().format('MMM D, YYYY')}
-                    </time>
+              </div>
+            )}
+
+            {blogs.length > 0 &&
+              blogs.map((blog) => (
+                <article key={blog.slug} className="flex flex-col items-start justify-between">
+                  <div className="relative w-full">
+                    <img
+                      alt=""
+                      src={blog.image}
+                      className="aspect-video w-full bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                    />
                   </div>
-                  <a className=" block group relative cursor-pointer" href={blog.link} target="_blank">
-                    <h3 className="mt-2 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                      {blog.title}
-                    </h3>
-                    <p className="mt-4 line-clamp-3 text-sm/6 text-gray-600">{blog.subtitle}</p>
-                  </a>
-                </div>
-              </article>
-            ))}
+                  <div className="max-w-xl">
+                    <div className="mt-6 flex items-center gap-x-4 text-xs">
+                      <time dateTime={blog.createdAt} className="text-gray-500">
+                        {moment.utc(blog.createdAt).local().format('MMM D, YYYY')}
+                      </time>
+                    </div>
+                    <a className=" block group relative cursor-pointer" href={blog.link} target="_blank">
+                      <h3 className="mt-2 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+                        {blog.title}
+                      </h3>
+                      <p className="mt-4 line-clamp-3 text-sm/6 text-gray-600">{blog.subtitle}</p>
+                    </a>
+                  </div>
+                </article>
+              ))}
           </div>
         </div>
       </div>
